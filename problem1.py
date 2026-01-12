@@ -19,11 +19,7 @@ def create_number_list(start, end):
         >>> create_number_list(1, 5)
         [1, 2, 3, 4, 5]
     """
-    # TODO: Implement this function
-    # Hint: Use range() and convert to list
-    return list(range(start,end+1))
-
-    pass
+    return list(range(start, end + 1))
 
 
 def filter_even_numbers(numbers):
@@ -41,39 +37,7 @@ def filter_even_numbers(numbers):
         >>> filter_even_numbers([1, 2, 3, 4, 5, 6])
         [2, 4, 6]
     """
-    # TODO: Implement this function
-    # You can use a loop or list comprehension
-
-def filter_even_numbers(numbers):
-
-    """
-    Return a new list containing only the even numbers.
-
-    Args:
-        numbers (list): List of integers
-
-    Returns:
-        list: List of even numbers only
-
-    Example:
-        >>> filter_even_numbers([1, 2, 3, 4, 5, 6])
-        [2, 4, 6]
-    """
-    # TODO: Implement this function
-    # You can use a loop or list comprehension
-    even_numbers = []
-
-    for n in numbers : 
-        if n % 2 == 0 : 
-            even_numbers.append(n)
-    
-    return even_numbers
-    
-
-
-
-
-    pass
+    return [n for n in numbers if n % 2 == 0]
 
 
 def square_numbers(numbers):
@@ -90,17 +54,7 @@ def square_numbers(numbers):
         >>> square_numbers([1, 2, 3, 4])
         [1, 4, 9, 16]
     """
-    # TODO: Implement this function
-    # Hint: Try a list comprehension!
-
-    square_numbers = []
-
-    for n in numbers : 
-        n = n**2 
-        square_numbers.append(n)
-    
-    return square_numbers
-    pass
+    return [n * n for n in numbers]
 
 
 def find_max_min(numbers):
@@ -117,15 +71,7 @@ def find_max_min(numbers):
         >>> find_max_min([3, 1, 4, 1, 5, 9, 2, 6])
         (9, 1)
     """
-    # TODO: Implement this function
-    # You can use max() and min() built-in functions
-   
-    max_value = max(numbers)
-    min_value = min(numbers)
-    
-    return (max_value, min_value)
-
-    pass
+    return (max(numbers), min(numbers))
 
 
 
@@ -144,12 +90,13 @@ def remove_duplicates(items):
         >>> remove_duplicates([1, 2, 2, 3, 4, 3, 5])
         [1, 2, 3, 4, 5]
     """
-    # TODO: Implement this function
-    # Hint: You can use a loop and check if item is already in result list
-    # Or convert to set and back to list (but this doesn't preserve order)
-    pass
-    unique_numbers = list(set(items))
-    return unique_numbers
+    seen = set()
+    unique_items = []
+    for item in items:
+        if item not in seen:
+            seen.add(item)
+            unique_items.append(item)
+    return unique_items
 
 
 def merge_lists(list1, list2):
@@ -170,9 +117,6 @@ def merge_lists(list1, list2):
         >>> merge_lists([1, 2], [10, 20, 30, 40])
         [1, 10, 2, 20, 30, 40]
     """
-    # TODO: Implement this function
-    # Hint: Use a loop with index, handle different lengths
-   
     merged = []
     for i in range(max(len(list1), len(list2))):
         if i < len(list1):
@@ -180,7 +124,6 @@ def merge_lists(list1, list2):
         if i < len(list2):
             merged.append(list2[i])
     return merged
-    pass
 
 
 def list_statistics(numbers):
@@ -200,20 +143,15 @@ def list_statistics(numbers):
     if not numbers:
         return None
 
-    # TODO: Implement this function
-    # Calculate and return a dictionary with the statistics
-    pass
-
-    sum_numbers = sum(numbers)
-    average_numbers = sum(numbers)/len(numbers)
-    count_numbers = len(numbers)
-    max_numbers = max(numbers)
-    min_numbers = min(numbers)
-
-    statistics = {
-        "sum" : sum_numbers , "average" : average_numbers , "count" : count_numbers, "max" : max_numbers , "min" : min_numbers    }
-
-    return statistics
+    total = sum(numbers)
+    count = len(numbers)
+    return {
+        "sum": total,
+        "average": total / count,
+        "count": count,
+        "max": max(numbers),
+        "min": min(numbers),
+    }
 
 def chunk_list(items, chunk_size):
     """
@@ -230,16 +168,7 @@ def chunk_list(items, chunk_size):
         >>> chunk_list([1, 2, 3, 4, 5, 6, 7], 3)
         [[1, 2, 3], [4, 5, 6], [7]]
     """
-    # TODO: Implement this function
-    # Hint: Use list slicing in a loop
-    pass
-    
-    list = []
-
-    for i in range(0,len(items),chunk_size):
-            list.append(items[i:i + chunk_size])
- 
-    return list
+    return [items[i:i + chunk_size] for i in range(0, len(items), chunk_size)]
 
 # Test cases
 if __name__ == "__main__":
